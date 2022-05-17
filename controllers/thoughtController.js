@@ -42,7 +42,7 @@ module.exports = {
             })
     },
     updateThought(req, res) {
-        Thought.findOneAndUpdate({ _id: req.params }, req.body, {new: true})
+        Thought.findOneAndUpdate({ _id: req.params.thoughtId }, req.body, {new: true})
             .select('-__v')
             .then((thought) => {
                 !thought
@@ -57,7 +57,7 @@ module.exports = {
             })
     },
     deleteThought(req, res) {
-        Thought.findOneAndDelete({ _id: req.params })
+        Thought.findOneAndDelete({ _id: req.params.thoughtId })
             .then(thought => {
                 !thought
                     ? res
